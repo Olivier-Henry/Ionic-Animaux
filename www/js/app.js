@@ -74,7 +74,12 @@ app.controller('AppController', function ($scope, $window, $ionicPlatform) {
 
 		if($window.cordova){
 			$ionicPlatform.ready(function(){
-				$scope.media = new $window.Media(sound.file);
+				var src = sound.file;
+				if($ionicPlatform.is('android')){
+					src = '/android_asset/www/'+ src;
+				}
+
+				$scope.media = new $window.Media(src);
 				$scope.play();
 			});
 		} else {
