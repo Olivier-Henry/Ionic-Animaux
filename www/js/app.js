@@ -13,7 +13,7 @@ app.run(function ($ionicPlatform) {
 	});
 });
 
-app.controller('AppController', function ($scope) {
+app.controller('AppController', function ($scope, $window, $ionicPlatform) {
 
 	$scope.media = null;
 
@@ -72,10 +72,19 @@ app.controller('AppController', function ($scope) {
 			$scope.media.pause();
 		}
 
-		$scope.media = new Audio();
-		$scope.media.src = sound.file;
-		$scope.media.load();
-		$scope.media.play();
+		if($window.cordova){
+			$ionicPlatform.ready(function(){
+				$scope.media = new $window.Media(sound.file);
+				$scope.play();
+			});
+		} else {
+			$scope.media = new Audio();
+			$scope.media.src = sound.file;
+			$scope.media.load();
+			$scope.media.play();
+		}
+
+
 	};
 });
 
