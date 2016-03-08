@@ -88,8 +88,10 @@ app.controller('AppController', function ($scope, $window, $ionicPlatform) {
 			$scope.media.load();
 			$scope.media.play();
 		}
-
-
 	};
+
+    $scope.delete = function(index){
+        $scope.model.sounds.splice(index, 1);
+    };
 });
 
