@@ -21,13 +21,22 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="cri-animaux" ng-controller="AppController">
+  <body ng-app="cri-animaux">
 
-    <ion-pane>
+    <ion-pane ng-controller="AppController">
       <ion-header-bar class="bar-stable">
         <h1 class="title">Cri des animaux</h1>
       </ion-header-bar>
       <ion-content>
+          <ion-list>
+              <ion-item class="item-avatar item-icon-right" ng-repeat="item in model.sounds">
+                  <img src="{{item.image}}" alt="{{item.desc}}">
+                  <h2>{{item.title}}</h2>
+                  <p>{{item.desc}}</p>
+
+                  <i class="icon ion-volume-high"></i>
+              </ion-item>
+          </ion-list>
       </ion-content>
     </ion-pane>
   </body>
