@@ -49,7 +49,7 @@
                   <i class="icon ion-volume-high"></i>
 
                   <ion-delete-button class="ion-minus-circled" ng-click="delete($index)"></ion-delete-button>
-                  <ion-reorder-button class="ion-navicon"></ion-reorder-button>
+                  <ion-reorder-button class="ion-navicon" on-reorder="move(item, $fromIndex, $toIndex)"></ion-reorder-button>
               </ion-item>
           </ion-list>
       </ion-content>

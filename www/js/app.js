@@ -93,5 +93,10 @@ app.controller('AppController', function ($scope, $window, $ionicPlatform) {
     $scope.delete = function(index){
         $scope.model.sounds.splice(index, 1);
     };
+
+    $scope.move = function(item, fromIndex, toIndex){
+        $scope.model.sounds.splice(fromIndex, 1);
+        $scope.model.sounds.splice(toIndex,0,item);
+    };
 });
 
