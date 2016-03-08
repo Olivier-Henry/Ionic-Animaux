@@ -67,6 +67,11 @@ app.controller('AppController', function ($scope) {
 	};
 
 	$scope.play = function (sound) {
+		//Arrêt du son au clic
+		if($scope.media){
+			$scope.media.pause();
+		}
+
 		$scope.media = new Audio();
 		$scope.media.src = sound.file;
 		$scope.media.load();
