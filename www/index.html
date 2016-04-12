@@ -24,10 +24,33 @@
   <body ng-app="cri-animaux" ng-controller="AppController">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <ion-header-bar class="bar-stable">        
         <h1 class="title">Cri des animaux</h1>
+        <div class="buttons">
+              <button ng-click="toggleDelete()" class="button button-icon ion-android-delete">
+                  
+              </button>
+            
+          </div>
+         <div class="buttons">
+              <button ng-click="toggleMove()" class="button button-icon ion-navicon">
+                  
+              </button>
+            
+          </div>
       </ion-header-bar>
       <ion-content>
+          <ion-list show-delete="model.showDelete" show-reorder="model.showMove">
+              <ion-item ng-repeat="animal in model.sounds" class="item-avatar item-icon-right calm" ng-click="play(animal)">
+                  <img ng-src="{{animal.image}}">
+                  <h2>{{animal.title}}</h2>
+                  <p>{{animal.desc}}</p>
+                  <i class="icon ion-play"></i>
+                  <ion-delete-button class="ion-android-delete" ng-click="delete($index)"></ion-delete-button>
+                  <ion-reorder-button class="ion-navicon" on-reorder="move(animal, $fromIndex, $toIndex)"></ion-reorder-button>
+              </ion-item>
+             
+          </ion-list>
       </ion-content>
     </ion-pane>
   </body>
